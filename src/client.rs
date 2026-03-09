@@ -2556,7 +2556,7 @@ pub fn run_remote(terminal: &mut Terminal<CrosstermBackend<crate::platform::Psmu
             }
             if renaming {
                 let overlay = Block::default().borders(Borders::ALL).title("rename window");
-                let oa = centered_rect(60, 3, chunks[0]);
+                let oa = centered_rect(60, 3, content_chunk);
                 f.render_widget(Clear, oa);
                 f.render_widget(&overlay, oa);
                 let para = Paragraph::new(format!("name: {}", rename_buf));
@@ -2564,7 +2564,7 @@ pub fn run_remote(terminal: &mut Terminal<CrosstermBackend<crate::platform::Psmu
             }
             if pane_renaming {
                 let overlay = Block::default().borders(Borders::ALL).title("set pane title");
-                let oa = centered_rect(60, 3, chunks[0]);
+                let oa = centered_rect(60, 3, content_chunk);
                 f.render_widget(Clear, oa);
                 f.render_widget(&overlay, oa);
                 let para = Paragraph::new(format!("title: {}", pane_title_buf));
@@ -2572,7 +2572,7 @@ pub fn run_remote(terminal: &mut Terminal<CrosstermBackend<crate::platform::Psmu
             }
             if command_input {
                 let overlay = Block::default().borders(Borders::ALL).title("command");
-                let oa = centered_rect(60, 3, chunks[0]);
+                let oa = centered_rect(60, 3, content_chunk);
                 f.render_widget(Clear, oa);
                 f.render_widget(&overlay, oa);
                 let para = Paragraph::new(format!(": {}", command_buf));
@@ -2580,7 +2580,7 @@ pub fn run_remote(terminal: &mut Terminal<CrosstermBackend<crate::platform::Psmu
             }
             if let Some(ref cmd) = confirm_cmd {
                 let overlay = Block::default().borders(Borders::ALL).title("confirm");
-                let oa = centered_rect(50, 3, chunks[0]);
+                let oa = centered_rect(50, 3, content_chunk);
                 f.render_widget(Clear, oa);
                 f.render_widget(&overlay, oa);
                 let para = Paragraph::new(format!("{}? (y/n)", cmd));
